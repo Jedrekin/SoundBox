@@ -34,6 +34,7 @@ public class FileSystem {
     public static FileSystem loadDirectory(File file) throws FileNotFoundException {
         if ( !file.exists() ) throw new FileNotFoundException();
         if ( !file.isDirectory() ) throw new FileSystemNotFoundException();
+        if ( Objects.requireNonNull(file.list()).length == 0) throw new FileNotFoundException(" sng\\ file is empty");
         return new FileSystem(file);
     }
 }
